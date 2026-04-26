@@ -294,16 +294,6 @@ used to configure some aspects of calc.  In calc v3, if `CALCRC`,
 relevant XDG base directory environment variables and uses them when
 they name usable absolute directories.
 
-Note that calc won't create the directory tree to `$CALCHISTFILE`,
-you'll need to run:
-
-```sh
-mkdir -p $(dirname $CALCHISTFILE)
-```
-
-in order to have the history mechanism if you choose a path to a file
-that doesn't exist.
-
 # Reporting Security Issues
 
 To report a security issue, please visit "[Reporting Security Issues](https://github.com/lcn2/calc/security/policy)".
