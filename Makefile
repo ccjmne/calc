@@ -617,10 +617,20 @@ conf.h: ${MK_SET}
 	${Q} echo '#define DEFAULTCALCPATH "${CALCPATH}"' >> $@
 	${Q} echo '#endif /* DEFAULTCALCPATH */' >> $@
 	${Q} echo '' >> $@
+	${Q} echo '/* the default system search path */' >> $@
+	${Q} echo '#if !defined(DEFAULTCALCPATH_SYS)' >> $@
+	${Q} echo '#define DEFAULTCALCPATH_SYS "${T}${CALC_SHAREDIR}:${T}${CUSTOMCALDIR}"' >> $@
+	${Q} echo '#endif /* DEFAULTCALCPATH_SYS */' >> $@
+	${Q} echo '' >> $@
 	${Q} echo '/* the default :-separated startup file list */' >> $@
 	${Q} echo '#if !defined(DEFAULTCALCRC)' >> $@
 	${Q} echo '#define DEFAULTCALCRC "${CALCRC}"' >> $@
 	${Q} echo '#endif /* DEFAULTCALCRC */' >> $@
+	${Q} echo '' >> $@
+	${Q} echo '/* the default system startup file */' >> $@
+	${Q} echo '#if !defined(DEFAULTCALCRC_SYS)' >> $@
+	${Q} echo '#define DEFAULTCALCRC_SYS "${T}${CALC_SHAREDIR}/startup"' >> $@
+	${Q} echo '#endif /* DEFAULTCALCRC_SYS */' >> $@
 	${Q} echo '' >> $@
 	${Q} echo '/* the location of the help directory */' >> $@
 	${Q} echo '#if !defined(HELPDIR)' >> $@
