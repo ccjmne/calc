@@ -59,6 +59,7 @@ typedef struct termios ttystruct;
 #include "label.h"
 #include "func.h"
 #include "strl.h"
+#include "have_unused.h"
 #if defined(CUSTOM)
 #  include "custom.h"
 #endif
@@ -1058,6 +1059,17 @@ orig_tty(int fd)
 /*
  * xdg_base - return an XDG base directory if it names a usable absolute path.
  */
+#if defined(_WIN32) || defined(_WIN64)
+
+static char *
+xdg_base(char *UNUSED(env), int UNUSED(mode))
+{
+    return NULL;
+
+}
+
+#else
+
 static char *
 xdg_base(char *env, int mode)
 {
@@ -1069,3 +1081,5 @@ xdg_base(char *env, int mode)
     }
     return base;
 }
+
+#endif
