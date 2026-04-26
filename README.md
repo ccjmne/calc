@@ -288,17 +288,11 @@ that may surprise C programmers.  The command:
 help environment
 ```
 
-contains information regarding how environment variables
-can be used to configure some aspects of calc.  In versions
-prior to v3, you may adhere to the [XDG Base Directory
-specification](https://specifications.freedesktop.org/basedir/latest/)
-by setting up your environment variables as such:
-
-```sh
-export CALCRC="${XDG_CONFIG_HOME:-$HOME/.config}/calc/calcrc"
-export CALCPATH=".:${XDG_DATA_HOME:-$HOME/.local/share}/calc:${XDG_CONFIG_HOME:-$HOME/.config}/calc:/usr/share/calc:/usr/share/calc/custom"
-export CALCHISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/calc/history"
-```
+contains information regarding how environment variables can be
+used to configure some aspects of calc.  In calc v3, if `CALCRC`,
+`CALCPATH`, and `CALCHISTFILE` are unset, calc first checks the
+relevant XDG base directory environment variables and uses them when
+they name usable absolute directories.
 
 Note that calc won't create the directory tree to `$CALCHISTFILE`,
 you'll need to run:
